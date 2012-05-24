@@ -25,20 +25,20 @@
     http://reprap.org/pipermail/reprap-dev/2011-May/003323.html
  */
 
-#include "Marlin.h"
+#include "Marlin32.h"
 
-#include "ultralcd.h"
+//#include "ultralcd.h"
 #include "planner.h"
 #include "stepper.h"
 #include "temperature.h"
 #include "motion_control.h"
-#include "cardreader.h"
-#include "watchdog.h"
-#include "EEPROMwrite.h"
-#include "language.h"
+//#include "cardreader.h"
+//#include "watchdog.h"
+//#include "EEPROMwrite.h"
+//#include "language.h"
 #include "pins_arduino.h"
 
-#define VERSION_STRING  "1.0.0 RC2"
+#define VERSION_STRING  "0.1.0 RC1"
 
 // look here for descriptions of gcodes: http://linuxcnc.org/handbook/gcode/g-code.html
 // http://objects.reprap.org/wiki/Mendel_User_Manual:_RepRapGCodes
@@ -53,7 +53,7 @@
 // G28 - Home all Axis
 // G90 - Use Absolute Coordinates
 // G91 - Use Relative Coordinates
-// G92 - Set current position to cordinates given
+// G92 - Set current position to coordinates given
 
 //RepRap M Codes
 // M104 - Set extruder target temp
@@ -305,7 +305,7 @@ void setup()
 }
 
 
-void loop()
+void Marlin32MainLoop()
 {
   if(buflen < (BUFSIZE-1))
     get_command();

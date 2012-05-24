@@ -4,7 +4,7 @@
 #ifndef __MARLINH
 #define __MARLINH
 
-#define  HardwareSerial_h // trick to disable the standard HWserial
+//#define  HardwareSerial_h // trick to disable the standard HWserial
 
 #define  FORCE_INLINE __attribute__((always_inline)) inline
 
@@ -14,26 +14,16 @@
 #include <string.h>
 #include <inttypes.h>
 
-#include <util/delay.h>
-#include <avr/pgmspace.h>
-#include <avr/eeprom.h>
-#include  <avr/wdt.h>
-#include  <avr/interrupt.h>
+//#include <util/delay.h>
+//#include <avr/pgmspace.h>
+//#include <avr/eeprom.h>
+//#include  <avr/wdt.h>
+//#include  <avr/interrupt.h>
 
 
 #include "fastio.h"
 #include "Configuration.h"
 #include "pins.h"
-
-#if ARDUINO >= 100 
-  #if defined(__AVR_ATmega644P__)
-    #include "WProgram.h"
-  #else
-    #include "Arduino.h"
-  #endif
-#else
-   #include "WProgram.h"
-#endif
 
 #include "MarlinSerial.h"
 
@@ -105,6 +95,8 @@ void process_commands();
 
 void manage_inactivity(byte debug);
 
+
+
 #if X_ENABLE_PIN > -1
   #define  enable_x() WRITE(X_ENABLE_PIN, X_ENABLE_ON)
   #define disable_x() WRITE(X_ENABLE_PIN,!X_ENABLE_ON)
@@ -169,6 +161,8 @@ bool IsStopped();
 
 void enquecommand(const char *cmd); //put an ascii command at the end of the current buffer.
 void prepare_arc_move(char isclockwise);
+
+
 
 #ifdef FAST_PWM_FAN
 void setPwmFrequency(uint8_t pin, int val);

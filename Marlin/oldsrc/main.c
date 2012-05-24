@@ -53,6 +53,9 @@
 #include "ui.h"
 #include "uart.h"
 
+
+#include "Marlin32.h"
+
 static bool main_b_msc_enable = false;
 static bool main_b_cdc_enable = false;
 
@@ -85,6 +88,8 @@ int main(void)
 	// The main loop manages only the power mode
 	// because the USB management is done by interrupt
 	while (true) {
+		
+		 Marlin32MainLoop() // Marlin32 main command loop
 
 		if (main_b_msc_enable) {
 			if (!udi_msc_process_trans()) {
