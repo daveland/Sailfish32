@@ -39,6 +39,7 @@
  *
  */
 
+
 #include "compiler.h"
 #include "preprocessor.h"
 #include "board.h"
@@ -52,7 +53,10 @@
 #include "udi_cdc.h"
 #include "ui.h"
 #include "uart.h"
+#include "usbmain.h"
 
+extern void board_init();
+//extern "C" { void	ui_init();};
 static bool main_b_msc_enable = false;
 static bool main_b_cdc_enable = false;
 
@@ -141,13 +145,15 @@ bool main_extra_string(void)
 		usb_str_desc_t header;
 		le16_t string[Max(sizeof(udi_cdc_name)-1, sizeof(udi_msc_name)-1)];
 	};
-	static UDC_DESC_STORAGE struct extra_strings_desc_t extra_strings_desc = {
-		.header.bDescriptorType = USB_DT_STRING
-	};
+	static UDC_DESC_STORAGE struct extra_strings_desc_t extra_strings_desc ;
+	 //const header.bDescriptorType = USB_DT_STRING
+	
 
 	uint8_t i;
 	uint8_t *str;
 	uint8_t str_lgt=0;
+	
+	extra_strings_desc.header.bDescriptorType=USB_DT_STRING;
 
 	// Link payload pointer to the string corresponding at request
 	switch (udd_g_ctrlreq.req.wValue & 0xff) {

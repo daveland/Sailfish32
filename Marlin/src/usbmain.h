@@ -39,8 +39,13 @@
  *
  */
 
-#ifndef _MAIN_H_
-#define _MAIN_H_
+#ifndef _USBMAIN_H_
+#define _USBMAIN_H_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 #include "usb_protocol_cdc.h"
 
@@ -101,5 +106,12 @@ bool main_extra_string(void);
 /*! \brief Initialize the memories used by examples
  */
 void memories_initialization(void);
+
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // _MAIN_H_

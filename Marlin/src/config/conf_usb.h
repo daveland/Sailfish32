@@ -247,7 +247,7 @@
 #include "udi_cdc.h"
 #include "udi_msc.h"
 #include "uart.h"
-#include "main.h"
+#include "usbmain.h"
 #include "ui.h"
 
 #endif // _CONF_USB_H_

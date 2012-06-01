@@ -47,6 +47,8 @@
 extern "C" {
 #endif
 
+
+
 /**
  * \weakgroup osc_group
  * @{

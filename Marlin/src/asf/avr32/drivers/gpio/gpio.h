@@ -52,6 +52,12 @@
  * \{
  */
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include <avr32/io.h>
 #include "compiler.h"
 
@@ -680,6 +686,11 @@ static inline void gpio_disable_pin_periph_event(uint32_t pin)
 extern int gpio_configure_pin_periph_event_mode(uint32_t pin, uint32_t mode, uint32_t use_igf);
 
 //! @}
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif
 
 /**

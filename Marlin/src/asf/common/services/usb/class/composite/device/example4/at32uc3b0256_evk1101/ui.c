@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief Sleep manager configuration
+ * \brief User Interface
  *
  * Copyright (c) 2011 Atmel Corporation. All rights reserved.
  *
@@ -38,9 +38,116 @@
  * \asf_license_stop
  *
  */
-#ifndef CONF_SLEEPMGR_H
-#define CONF_SLEEPMGR_H
 
-//#define CONFIG_SLEEPMGR_ENABLE  
+#include "compiler.h"
+#include "conf_usb.h"
+#include "board.h"
+#include "gpio.h"
+#include "ui.h"
 
-#endif /* CONF_SLEEPMGR_H */
+#ifdef __cplusplus
+    extern "C" {
+    #endif
+
+
+void ui_init(void)
+{
+	LED_On(LED0);
+	LED_Off(LED1);
+	LED_Off(LED2);
+	LED_Off(LED3);
+}
+
+void ui_powerdown(void)
+{
+	LED_Off(LED0);
+	LED_Off(LED1);
+	LED_Off(LED2);
+	LED_Off(LED3);
+}
+
+void ui_wakeup(void)
+{
+	LED_On(LED0);
+}
+
+void ui_com_open(void)
+{
+}
+
+void ui_com_close(void)
+{
+}
+
+void ui_com_rx_start(void)
+{
+	LED_On(LED3);
+}
+
+void ui_com_rx_stop(void)
+{
+	LED_Off(LED3);
+}
+
+void ui_com_tx_start(void)
+{
+	LED_On(LED3);
+}
+
+void ui_com_tx_stop(void)
+{
+	LED_Off(LED3);
+}
+
+void ui_com_error(void)
+{
+}
+
+void ui_com_overflow(void)
+{
+}
+
+void ui_start_read(void)
+{
+	LED_On(LED2);
+}
+
+void ui_stop_read(void)
+{
+	LED_Off(LED2);
+}
+
+void ui_start_write(void)
+{
+	LED_On(LED2);
+}
+
+void ui_stop_write(void)
+{
+	LED_Off(LED2);
+}
+
+void ui_process(uint16_t framenumber)
+{
+	if ((framenumber % 1000) == 0) {
+		LED_On(LED1);
+	}
+	if ((framenumber % 1000) == 500) {
+		LED_Off(LED1);
+	}
+}
+
+#ifdef __cplusplus
+    }
+    #endif
+
+
+/**
+ * \defgroup UI User Interface
+ *
+ * Human interface on EVK1101:
+ * - Led 0 is on when USB line is in IDLE mode, and off in SUSPEND mode
+ * - Led 1 blinks when USB Host have checked and enabled CDC and MSC interfaces
+ * - Led 2 is on during read or write operation
+ * - Led 3 is on during data transfer on COM port
+ */

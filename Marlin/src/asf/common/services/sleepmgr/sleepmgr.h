@@ -41,6 +41,13 @@
 #ifndef SLEEPMGR_H
 #define SLEEPMGR_H
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+
 #include <compiler.h>
 #include <sleep.h>
 #include <parts.h>
@@ -184,6 +191,7 @@ static inline enum sleepmgr_mode sleepmgr_get_sleep_mode(void)
 	while (!(*lock_ptr)) {
 		lock_ptr++;
 		sleep_mode++;
+	
 	}
 
 	// Catch the case where one too many sleepmgr_unlock_mode() call has been
@@ -229,6 +237,10 @@ static inline void sleepmgr_enter_sleep(void)
 #endif /* CONFIG_SLEEPMGR_ENABLE */
 }
 
+
+#ifdef __cplusplus
+}
+#endif
 
 //! @}
 

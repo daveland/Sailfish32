@@ -42,6 +42,11 @@
 #ifndef _UI_H_
 #define _UI_H_
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //! \brief Initializes the user interface
 void ui_init(void);
 
@@ -98,4 +103,7 @@ void ui_com_overflow(void);
  */
 void ui_process(uint16_t framenumber);
 
+#ifdef __cplusplus
+}
+#endif
 #endif // _UI_H_

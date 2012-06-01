@@ -179,6 +179,7 @@
   </avr32gcc.compiler.symbols.DefSymbols>
   <avr32gcc.compiler.directories.IncludePaths>
     <ListValues>
+      <Value>../src</Value>
       <Value>../src/config</Value>
       <Value>../src/asf/avr32/utils</Value>
       <Value>../src/asf/avr32/utils/preprocessor</Value>
@@ -192,21 +193,59 @@
       <Value>../src/asf/common/services/usb/udc</Value>
       <Value>../src/asf/common/services/usb/class/msc/device</Value>
       <Value>../src/asf/common/services/usb/class/msc</Value>
-      <Value>../src</Value>
       <Value>../src/asf/common/services/clock</Value>
       <Value>../src/asf/common/boards</Value>
       <Value>../src/asf/common/services/sleepmgr</Value>
       <Value>../src/asf/common/services/sleepmgr/uc3</Value>
+      <Value>../src/asf/common/services/usb/class/composite/device/example4/at32uc3b0256_evk1101</Value>
       <Value>../src/asf/avr32/drivers/pm</Value>
-      <Value>../src/asf/avr32/boards</Value>
       <Value>../src/asf/avr32/drivers/flashc</Value>
       <Value>../src/asf/common/services/storage/ctrl_access</Value>
       <Value>../src/asf/avr32/drivers/gpio</Value>
+      <Value>../src/asf/avr32/boards/evk1101</Value>
+      <Value>../src/asf/avr32/boards</Value>
+      <Value>../src/asf/avr32/drivers/usart</Value>
     </ListValues>
   </avr32gcc.compiler.directories.IncludePaths>
   <avr32gcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</avr32gcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
   <avr32gcc.compiler.optimization.UseAssemblerForPseudoInstructions>True</avr32gcc.compiler.optimization.UseAssemblerForPseudoInstructions>
   <avr32gcc.compiler.warnings.AllWarnings>True</avr32gcc.compiler.warnings.AllWarnings>
+  <avr32gcccpp.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>BOARD=EVK1101</Value>
+    </ListValues>
+  </avr32gcccpp.compiler.symbols.DefSymbols>
+  <avr32gcccpp.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>../src/config</Value>
+      <Value>../src/asf/avr32/utils</Value>
+      <Value>../src/asf/avr32/utils/preprocessor</Value>
+      <Value>../src/asf/common/utils/interrupt</Value>
+      <Value>../src/asf/common/utils</Value>
+      <Value>../src/asf/avr32/drivers/intc</Value>
+      <Value>../src/asf/avr32/drivers/usbb</Value>
+      <Value>../src/asf/common/services/usb/class/cdc/device</Value>
+      <Value>../src/asf/common/services/usb/class/cdc</Value>
+      <Value>../src/asf/common/services/usb</Value>
+      <Value>../src/asf/common/services/usb/udc</Value>
+      <Value>../src/asf/common/services/usb/class/msc/device</Value>
+      <Value>../src/asf/common/services/usb/class/msc</Value>
+      <Value>../src/asf/common/services/clock</Value>
+      <Value>../src/asf/common/services/sleepmgr</Value>
+      <Value>../src/asf/common/services/sleepmgr/uc3</Value>
+      <Value>../src/asf/avr32/drivers/pm</Value>
+      <Value>../src/asf/avr32/drivers/flashc</Value>
+      <Value>../src/asf/common/services/usb/class/composite/device/example4/at32uc3b0256_evk1101</Value>
+      <Value>../src/asf/common/services/storage/ctrl_access</Value>
+      <Value>../src/asf/avr32/drivers/gpio</Value>
+      <Value>../src/asf/common/boards</Value>
+      <Value>../src/asf/avr32/boards</Value>
+      <Value>../src/asf/avr32/boards/evk1101</Value>
+      <Value>../src/asf/common/services/usb/class/composite/device</Value>
+      <Value>../src/asf/avr32/drivers/usart</Value>
+      <Value>../src</Value>
+    </ListValues>
+  </avr32gcccpp.compiler.directories.IncludePaths>
   <avr32gcccpp.compiler.optimization.level>Optimize (-O1)</avr32gcccpp.compiler.optimization.level>
   <avr32gcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>True</avr32gcccpp.compiler.optimization.PrepareFunctionsForGarbageCollection>
   <avr32gcccpp.compiler.optimization.UseAssemblerForPseudoInstructions>True</avr32gcccpp.compiler.optimization.UseAssemblerForPseudoInstructions>
@@ -286,13 +325,22 @@
     <Compile Include="src\asf\avr32\drivers\flashc\flashc.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\main.h">
+    <Compile Include="src\asf\common\services\usb\class\composite\device\example4\at32uc3b0256_evk1101\ui.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\memories_initialization_uc3.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\uart.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\uart_uc3.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\ui.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\usbmain.h">
       <SubType>compile</SubType>
     </Compile>
     <None Include="atmel_devices_cdc.inf">
@@ -392,6 +440,9 @@
       <SubType>compile</SubType>
     </None>
     <None Include="src\asf\common\services\usb\class\cdc\usb_protocol_cdc.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\asf\common\services\usb\class\composite\device\example4\avr_cdc_composite.inf">
       <SubType>compile</SubType>
     </None>
     <None Include="src\asf\common\services\usb\class\composite\device\udi_composite_conf.h">
@@ -555,6 +606,8 @@
     <Folder Include="src\asf\common\services\usb\class\cdc\device\" />
     <Folder Include="src\asf\common\services\usb\class\composite\" />
     <Folder Include="src\asf\common\services\usb\class\composite\device\" />
+    <Folder Include="src\asf\common\services\usb\class\composite\device\example4\" />
+    <Folder Include="src\asf\common\services\usb\class\composite\device\example4\at32uc3b0256_evk1101\" />
     <Folder Include="src\asf\common\services\usb\class\msc\" />
     <Folder Include="src\asf\common\services\usb\class\msc\device\" />
     <Folder Include="src\asf\common\services\usb\udc\" />

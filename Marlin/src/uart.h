@@ -42,6 +42,12 @@
 #ifndef _UART_H_
 #define _UART_H_
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*! \brief Called by CDC interface
  * Callback running when CDC device have receiv data
  */
@@ -60,5 +66,10 @@ void uart_open(void);
 /*! \brief Closes communication line
  */
 void uart_close(void);
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // _UART_H_
